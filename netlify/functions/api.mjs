@@ -143,7 +143,7 @@ export default async (req) => {
       const blob=await store().get(item.key,{type:"blob"});
       let contentType="image/jpeg";
       try { const meta=await store().getMetadata(item.key); contentType=meta?.metadata?.contentType||contentType; } catch {}
-      return new Response(blob,{headers:{"content-type":contentType,"cache-control":"public, max-age=31536000, immutable"}});
+      return new Response(blob,{headers:{"content-type":contentType,"cache-control":"public, max-age=300, must-revalidate"}});
     }
     return json({error:"Ruta no encontrada."},404);
   } catch(e){
