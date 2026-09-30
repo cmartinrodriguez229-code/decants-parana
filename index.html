@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="DECANTS PARANA — perfumes originales en decants de 5 ml y 10 ml.">
+  <title>DECANTS PARANA — Perfumes en 5 ml y 10 ml</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#inicio" aria-label="DECANTS PARANA inicio">
+        <span class="brand-mark">LD</span>
+        <span data-setting="siteName">DECANTS PARANA</span>
+      </a>
+      <nav class="nav">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#como-comprar">Cómo comprar</a>
+        <a href="#registro">Mis datos</a>
+        <button id="cartBtn" class="cart-button" type="button" aria-label="Abrir carrito">
+          🛒 <span>Carrito</span> <b id="cartCount">0</b>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow" data-setting="heroEyebrow">PERFUMERÍA · PARANÁ</p>
+          <h1><span data-setting="heroTitle">Tu perfume favorito,</span><br><em data-setting="heroTitleAccent">en el tamaño justo.</em></h1>
+          <p class="hero-copy" data-setting="heroText">Elegí tu fragancia, seleccioná 5 ml o 10 ml y armá tu pedido. Recibimos pedidos por WhatsApp y el pago se realiza únicamente por transferencia.</p>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="#catalogo">Ver catálogo</a>
+            <button class="btn btn-light" id="heroCartBtn" type="button">Ver carrito <span id="heroCartCount">(0)</span></button>
+          </div>
+        </div>
+        <div class="price-card">
+          <div><span>DECANT</span><strong>5 ml</strong><b>$12.000</b></div>
+          <div><span>DECANT</span><strong>10 ml</strong><b>$18.000</b></div>
+          <small>Transferencia · Mercado Pago<br><strong>Alias: rayo.doblar.rizo.mp</strong></small>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogo" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" data-setting="catalogEyebrow">CATÁLOGO</p>
+            <h2 data-setting="catalogTitle">Elegí tu fragancia</h2>
+            <p id="resultCount" class="muted"></p>
+          </div>
+          <div class="catalog-tools">
+            <label class="search">
+              <span>⌕</span>
+              <input id="searchInput" type="search" placeholder="Buscar perfume..." autocomplete="off">
+            </label>
+            <select id="brandFilter" aria-label="Filtrar por marca">
+              <option value="all">Todas las marcas</option>
+            </select>
+            <select id="sortSelect" aria-label="Ordenar">
+              <option value="az">A → Z</option>
+              <option value="za">Z → A</option>
+            </select>
+          </div>
+        </div>
+        <div id="brandChips" class="chips"></div>
+        <div id="productGrid" class="product-grid"></div>
+        <nav id="pagination" class="pagination" aria-label="Paginación del catálogo"></nav>
+      </div>
+    </section>
+
+    <section id="como-comprar" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" data-setting="howEyebrow">SIMPLE Y DIRECTO</p>
+            <h2 data-setting="howTitle">Cómo comprar</h2>
+          </div>
+        </div>
+        <div class="steps">
+          <article><span>01</span><h3>Elegí</h3><p>Agregá perfumes al carrito y elegí 5 ml o 10 ml.</p></article>
+          <article><span>02</span><h3>Confirmá</h3><p>Revisá cantidades y total. Completá tus datos de contacto.</p></article>
+          <article><span>03</span><h3>Transferí</h3><p>Pagá por transferencia al alias <strong data-setting="alias">rayo.doblar.rizo.mp</strong>.</p></article>
+          <article><span>04</span><h3>WhatsApp</h3><p>Enviá el pedido por WhatsApp. Te confirmamos disponibilidad y entrega.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="registro" class="section">
+      <div class="container register-grid">
+        <div>
+          <p class="eyebrow">CLIENTES</p>
+          <h2>Tus datos</h2>
+          <p class="muted">Guardalos en este dispositivo para agilizar futuros pedidos. En esta versión no se envían automáticamente a un servidor.</p>
+        </div>
+        <form id="customerForm" class="customer-form">
+          <div class="form-row">
+            <label>Nombre<input name="nombre" required></label>
+            <label>Apellido<input name="apellido" required></label>
+          </div>
+          <label>Domicilio<input name="domicilio" required></label>
+          <div class="form-row">
+            <label>Localidad<input name="localidad" value="Paraná" required></label>
+            <label>Teléfono<input name="telefono" inputmode="tel" required></label>
+          </div>
+          <button class="btn btn-dark" type="submit">Guardar mis datos</button>
+          <p id="saveMessage" class="form-message" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="container contact-inner">
+        <div><p class="eyebrow">CONTACTO</p><h2 data-setting="contactTitle">¿Tenés una consulta?</h2><p class="muted" data-setting="contactText"></p></div>
+        <div class="contact-links">
+          <a data-setting="whatsappLink" href="https://wa.me/5493434161890" target="_blank" rel="noopener">WhatsApp · +54 9 343 416-1890</a>
+          <a data-setting="emailLink" href="mailto:c.martin.rodriguez.229@gmail.com">c.martin.rodriguez.229@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><span data-setting="siteName">DECANTS PARANA</span><span>© 2026</span></div></footer>
+
+  <div id="productModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="modal"></div>
+    <div class="modal-card modal-product" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" data-close="modal" aria-label="Cerrar">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <aside id="cartDrawer" class="drawer" aria-hidden="true">
+    <div class="drawer-backdrop" data-close="cart"></div>
+    <div class="drawer-panel">
+      <div class="drawer-head"><div><p class="eyebrow">TU PEDIDO</p><h2>Carrito</h2></div><button class="modal-close" data-close="cart" aria-label="Cerrar">×</button></div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-summary">
+        <div><span>Total</span><strong id="cartTotal">$0</strong></div>
+        <button id="checkoutBtn" class="btn btn-dark btn-full" type="button">Continuar pedido</button>
+        <button id="clearCartBtn" class="text-button" type="button">Vaciar carrito</button>
+      </div>
+    </div>
+  </aside>
+
+  <div id="checkoutModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="checkout"></div>
+    <div class="modal-card checkout-card" role="dialog" aria-modal="true">
+      <button class="modal-close" data-close="checkout" aria-label="Cerrar">×</button>
+      <p class="eyebrow">CONFIRMAR PEDIDO</p>
+      <h2>Revisá tus datos</h2>
+      <div id="checkoutSummary"></div>
+      <form id="checkoutForm" class="checkout-form">
+        <div class="form-row">
+          <label>Nombre<input id="coNombre" required></label>
+          <label>Apellido<input id="coApellido" required></label>
+        </div>
+        <label>Domicilio<input id="coDomicilio" required></label>
+        <div class="form-row">
+          <label>Localidad<input id="coLocalidad" required></label>
+          <label>Teléfono<input id="coTelefono" required></label>
+        </div>
+        <div class="payment-box">
+          <strong>Pago por transferencia</strong>
+          <p>Mercado Pago · Alias</p>
+          <code>rayo.doblar.rizo.mp</code>
+          <small>Realizá la transferencia y luego enviá el pedido por WhatsApp. La disponibilidad se confirma antes de preparar el pedido.</small>
+        </div>
+        <button class="btn btn-whatsapp btn-full" type="submit">Enviar pedido por WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <button id="backToTop" class="back-to-top" type="button" aria-label="Volver arriba" title="Volver arriba">↑ <span>Back to top</span></button>
+
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
