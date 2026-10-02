@@ -693,7 +693,7 @@ const PRODUCTS = [
     "id": "afnan-9am-pour-femme",
     "brand": "Afnan",
     "name": "9am Pour Femme",
-    "image": "assets/perfumes/afnan-9am-pour-femme.svg",
+    "image": "assets/perfumes/afnan-9am-pour-femme.jpg",
     "source": "https://pency.app/kingdistributions",
     "description": "Fragancia femenina fresca floral de Afnan. Versión diurna y luminosa de la línea 9am. Disponible en decant de 5 ml y 10 ml."
   },
