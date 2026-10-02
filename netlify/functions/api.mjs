@@ -105,6 +105,16 @@ export default async (req) => {
       return json({ok:true},200,{"set-cookie":cookieHeader("",0),...noStoreHeaders()});
     }
     if(req.method==="GET" && path==="session") return json({authenticated:validSession(req)},200,noStoreHeaders());
+    // Las fotos son públicas: tienen que verse sin sesión de administrador.
+    if(req.method==="GET" && path.startsWith("image/")){
+      const id=decodeURIComponent(path.slice(6));
+      const found=await store().list({prefix:`images/${id}.`});
+      const item=found.blobs?.[0]; if(!item) return new Response("Not found",{status:404});
+      const blob=await store().get(item.key,{type:"blob"});
+      let contentType="image/jpeg";
+      try { const meta=await store().getMetadata(item.key); contentType=meta?.metadata?.contentType||contentType; } catch {}
+      return new Response(blob,{headers:{"content-type":contentType,"cache-control":"public, max-age=300, must-revalidate"}});
+    }
     if(!requireAdmin(req)) return json({error:"No autorizado."},401,noStoreHeaders());
 
     if(req.method==="GET" && path==="admin"){
@@ -135,15 +145,6 @@ export default async (req) => {
       for(const old of (existing.blobs||[])){ if(old.key!==key) await store().delete(old.key); }
       await store().set(key,await file.arrayBuffer(),{metadata:{contentType:file.type||"image/jpeg",originalName:file.name}});
       return json({ok:true,url:`/api/image/${encodeURIComponent(id)}`},200,noStoreHeaders());
-    }
-    if(req.method==="GET" && path.startsWith("image/")){
-      const id=decodeURIComponent(path.slice(6));
-      const found=await store().list({prefix:`images/${id}.`});
-      const item=found.blobs?.[0]; if(!item) return new Response("Not found",{status:404});
-      const blob=await store().get(item.key,{type:"blob"});
-      let contentType="image/jpeg";
-      try { const meta=await store().getMetadata(item.key); contentType=meta?.metadata?.contentType||contentType; } catch {}
-      return new Response(blob,{headers:{"content-type":contentType,"cache-control":"public, max-age=300, must-revalidate"}});
     }
     return json({error:"Ruta no encontrada."},404);
   } catch(e){
