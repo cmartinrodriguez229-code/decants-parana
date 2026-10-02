@@ -674,14 +674,6 @@
     "description": "Fragancia nocturna de perfil intenso y moderno. Nota: texto de catálogo; no sustituye la ficha oficial."
   },
   {
-    "id": "afnan-9pm-pour-femme",
-    "brand": "Afnan",
-    "name": "9pm Pour Femme",
-    "image": "assets/perfumes/afnan-9pm-pour-femme.svg",
-    "source": "https://pency.app/kingdistributions",
-    "description": "Fragancia femenina dulce floral de Afnan. Versión femenina de 9pm, cálida y nocturna. Disponible en decant de 5 ml y 10 ml."
-  },
-  {
     "id": "afnan-9pm-rebel",
     "brand": "Afnan",
     "name": "9pm Rebel",
