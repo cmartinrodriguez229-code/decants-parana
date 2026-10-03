@@ -54,7 +54,7 @@ function productCard(p){
         ${p.enabled5 !== false ? `<button class="size-btn" data-add="${escapeHtml(pkey(p))}" data-size="5">5 ml · ${money(p.price5 ?? PRICES[5])}</button>` : ""}
         ${p.enabled10 !== false ? `<button class="size-btn" data-add="${escapeHtml(pkey(p))}" data-size="10">10 ml · ${money(p.price10 ?? PRICES[10])}</button>` : ""}
       </div>
-      <button class="chip2" data-detail="${escapeHtml(pkey(p))}">Ver ficha</button>
+      <button class="chip" data-detail="${escapeHtml(pkey(p))}">Ver ficha</button>
     </div>
   </article>`;
 }
