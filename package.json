@@ -1,9 +1,10 @@
 {
-  "name": "decants-parana-netlify",
-  "version": "4.0.0",
+  "name": "decants-parana",
+  "version": "5.0.0",
   "private": true,
-  "description": "DECANTS PARANA - catalogo y administracion sobre Netlify",
+  "description": "DECANTS PARANA - catalogo y administracion sobre Vercel",
+  "engines": { "node": "22.x" },
   "dependencies": {
-    "@netlify/blobs": "^10.4.1"
+    "@vercel/blob": "^1.0.0"
   }
 }

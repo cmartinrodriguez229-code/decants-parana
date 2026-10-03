@@ -216,7 +216,7 @@ $("#checkoutForm").addEventListener("submit",e=>{
 document.addEventListener("keydown",e=>{
   if((e.key==="Enter"||e.key===" ")&&e.target.matches&&e.target.matches(".is-link[data-detail]")){e.preventDefault();showProduct(e.target.dataset.detail);return}
   if(e.key==="Escape"){closeDrawer();closeModal("#productModal");closeModal("#checkoutModal")}});
-async function loadCatalogFromNetlify(){
+async function loadCatalog(){
   try{
     const r=await fetch("/api/catalog",{cache:"no-store"});
     if(!r.ok) throw new Error("No se pudo cargar el catálogo");
@@ -229,7 +229,7 @@ async function loadCatalogFromNetlify(){
     applySiteSettings();
     renderCatalog(); fillCustomerForm(); updateCartUI();
   }catch(err){
-    // Fallback: the static seed remains usable if the Netlify backend is temporarily unavailable.
+    // Fallback: the static seed remains usable if the backend is temporarily unavailable.
     renderCatalog(); fillCustomerForm(); updateCartUI();
     showToast("Catálogo local cargado. Backend no disponible.");
   }
@@ -268,4 +268,4 @@ function toggleBackToTop(){backBtn.classList.toggle("show",window.scrollY>600)}
 window.addEventListener("scroll",toggleBackToTop,{passive:true});
 backBtn.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
 toggleBackToTop();
-loadCatalogFromNetlify();
+loadCatalog();
