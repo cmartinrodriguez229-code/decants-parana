@@ -49,12 +49,12 @@ function productCard(p){
     <div class="product-body">
       <h3 class="is-link" data-detail="${_id}" role="button" tabindex="0">${escapeHtml(p.name)}</h3>
       <p class="is-link product-desc" data-detail="${_id}" role="button" tabindex="0">${escapeHtml(desc)}</p>
-      <div class="product-price">Desde ${money(p.price5 ?? PRICES[5])}</div>
+      
       <div class="product-actions">
         ${p.enabled5 !== false ? `<button class="size-btn" data-add="${escapeHtml(pkey(p))}" data-size="5">5 ml · ${money(p.price5 ?? PRICES[5])}</button>` : ""}
         ${p.enabled10 !== false ? `<button class="size-btn" data-add="${escapeHtml(pkey(p))}" data-size="10">10 ml · ${money(p.price10 ?? PRICES[10])}</button>` : ""}
       </div>
-      <button class="chip" data-detail="${escapeHtml(pkey(p))}">Ver ficha</button>
+      <button class="chip2" data-detail="${escapeHtml(pkey(p))}">Ver ficha</button>
     </div>
   </article>`;
 }
